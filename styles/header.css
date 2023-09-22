@@ -1,103 +1,109 @@
-.hidden{
-    display: none;
-}
-
-.navbar{
+.navbar {
     display: grid;
-    grid-template-columns: 1fr 1fr 3fr;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: var(--dark-jungle-green);
     align-items: center;
+    justify-items: center;
     color: white;
     width: 100%;
     height: 10rem;
     position: sticky;
     font-size: var(--medium);
-    z-index: 1; 
+    z-index: 1;
 }
 
-.navbar__logo{
-    height: 100%;
+.navbar__logo {
+    height: 50%;
     max-width: 30rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.navbar__logo img{
-    height: 50%;
-    object-fit: cover;
+
+.navbar__name {
+    font-size: var(--xlg);
+    justify-self: start;
 }
 
-.navbar__name{
-    font-size: var(--xlg);
+.navbar__icon{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    right: 30px;
 }
+
+.navbar__menu-icon--show {
+    filter: invert(75%) sepia(47%) saturate(2805%) hue-rotate(168deg) brightness(87%) contrast(102%);
+}
+
 .navbar__list {
-    position: static;
-    height: 100%;
-    width: 100%;
+    height: 75vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--dark-jungle-green);
     list-style: none;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    transform: translateY(0%);
-}
-.navbar__list li{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transform: translateY(-100%);
+    transition: transform var(--normal-transition-time);
 }
 
-.navbar__link{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.navbar__link a {
+    transition: var(--short-transition-time);
     text-decoration: none;
     color: white;
 }
-.navbar__link--extra{ /* QUITAR CUANDO AGREGAMOS EXTRAS */
+
+.navbar__link--extras {
     display: none;
-} 
+}
+
+.navbar__list--show {
+    transform: translateY(0%);
+    box-shadow: 0px 15px 10px -15px rgb(0, 0, 0);
+}
 
 @media (any-hover: hover) {
-    .navbar__list li:hover {           /* hover for list options */
+    .navbar__link:hover {
         background-color: var(--blue-sapphire);
     }
 }
-  
+
 @media only screen and (min-width: 768px) {
-    .navbar {            /* general distribution */
+    .navbar {
         display: grid;
         grid-template-columns: 1fr 1fr 3fr;
-        justify-items: unset;
-        top: 0;
         box-shadow: 0px 10px 12px 0px var(--dark-jungle-green-transparency);
     }
 
-    .navbar__icon {      /* img container styles */
+    .navbar__icon{
         display: none;
     }
 
-    .navbar__list {         /* option list styles */
+    .navbar__list {
         position: static;
         height: 100%;
         width: 100%;
         list-style: none;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         transform: translateY(0%);
     }
 
-    .navbar__lin {   /* a base styles */
+    .navbar__link {
         font-weight: lighter;
     }
 
-    .navbar__list--show {               /* show list */
+    .navbar__list--show {
         transform: translateY(0%);
         box-shadow: none;
     }
